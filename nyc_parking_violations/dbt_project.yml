@@ -34,17 +34,17 @@ models:
   nyc_parking_violations:
     # Config indicated by + and applies to all files under models/example/
     example:
-      +materialized: ephemeral
+      +materialized: table
     bronze:
-      +materialized: view
+      +materialized: table
     silver:
       silver_parking_violation_codes:
-        +materialized: ephemeral
+        +materialized: table
       silver_parking_violations:
-        +materialized: ephemeral
+        +materialized: table
       silver_violation_tickets:
-        +materialized: view
+        +materialized: table
       silver_violation_vehicles:
-        +materialized: view
+        +materialized: table
     gold:
       +materialized: table

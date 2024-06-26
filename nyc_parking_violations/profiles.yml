@@ -1,6 +1,17 @@
+# nyc_parking_violations:
+  # outputs:
+  #   dev:
+  #     type: duckdb
+  #     path: '../data/nyc_parking_violations.db' 
+  # target: dev
+
 nyc_parking_violations:
+  target: dev
   outputs:
     dev:
-      type: duckdb
-      path: '../data/nyc_parking_violations.db' 
-  target: dev
+      type: clickhouse
+      schema: default  # ClickHouse database name
+      host: localhost  # ClickHouse server host
+      user: default  # ClickHouse user
+      password: ''  # ClickHouse password
+      port: 8123  # ClickHouse server port
