@@ -27,25 +27,13 @@ SELECT
     keywords,
     external_sources,
     update_category,
-    case
-        when entered is not null
-            and entered <> ''
-            and length(entered) = 10
-        then toDate(entered, 'UTC')
-        else
-            null
-    end as created_at,
-    case
-        when updated is not null
-            and updated <> ''
-            and length(updated) = 10
-        then toDate(updated, 'UTC')
-        else
-            null
-    end as updated_at,
     editor,
     `age_date_(as_of_date)` as age_date,
     pep_roles,
     pep_status,
-    special_interest_categories
-FROM `premium-world-check-full-synthetic`
+    special_interest_categories,
+    {{ to_utc_date_if_not_null('entered') }} as created_at,
+    {{ to_utc_date_if_not_null('updated') }} as updated_at,
+    toTimeZone(now64(), 'UTC') as inserted_at
+FROM
+    `premium-world-check-full-synthetic`
