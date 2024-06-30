@@ -1,0 +1,10 @@
+wc_premium:
+  target: dev
+  outputs:
+    dev:
+      type: clickhouse
+      schema: worldcheck  # ClickHouse database name
+      host: localhost  # ClickHouse server host
+      user: default  # ClickHouse user
+      password: ''  # ClickHouse password
+      port: 8123  # ClickHouse server port
